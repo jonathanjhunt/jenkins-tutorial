@@ -1,19 +1,15 @@
 pipeline{
         agent any
         stages{
-                stage("make python script"){
+            stage('Make Directory'){
                 steps{
-                         //MAKE THE FILE
-                         sh 'touch helloworld.py'
-                         // put content in file
-                         sh 'echo "print('hello world')" > helloworld.py'
+                    sh "mkdir ~/jenkins-tutorial-test"
+                }
+            }
+            stage('Make Files'){
+                steps{
+                    sh "touch ~/jenkins-tutorial-test/file1 ~/jenkins-tutorial-test/file2"
+                }
+            }
         }
-        stage('run python script'){
-        steps {
-                //run the script
-                python3 helloworld.py
-        }
-        }
-        
-   }
 }
